@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html ng-app="myApp" >
+<head>
+
+	<title> Shaastra Registration Form</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+  <script type="text/javascript">
+  
+  var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+   $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+    $scope.buttontxt =  "submit" ;
+    $scope.bgcol="white" ;
+
+    $scope.click = function(){
+         $scope.buttontxt =  "Succesfully Submitted" ;
+         $scope.bgcol = "green" ;
+
+    }
+});
+
+  // Function that reloads the page
+function resetting_fn()
+{
+      location.reload() ;
+}
+</script>
+
+<style type="text/css">
+  
+body {
+    background-image: url(bg7.jpg) ;
+    background-repeat: no-repeat ;
+    background-size: 1360px 580px ; 
+ }
+label {
+     font-style: italic ;
+     color: #BC0289 ;
+ }
+#selection {
+    font-style: italic ; 
+    color: #056C34 ; 
+    font-size: 15px ; 
+    margin-left: 100px ;
+ }
+.form-control { 
+    color: #056C34 ; 
+   text-align: center;
+ }
+.form-group { 
+    text-align: center; 
+ } 
+ .hd{
+  color: red ;
+ }
+ #ld{
+  color: #5A4280 ;
+ }
+input.ng-invalid.ng-dirty{border: 1px solid red ;}
+
+</style>
+
+</head>
+<body>
+
+<div class="container" ng-controller="myCtrl"  >
+  <h1 style=" text-align: center; text-shadow: 1px 1px #B0ACAB ; padding: 10px 5px 50px ; color: #BC0210 "><i>Register Here</i></h1>
+  <form class="form-horizontal" name="form" >
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" >State :</label>
+      <select  id="selection" >
+            <option >AndhraPradesh</option>
+            <option >ArunachalPradesh</option>
+            <option >Assam</option> 
+            <option >Bihar</option> 
+            <option >Chattisgarh</option>
+            <option >Goa</option> 
+            <option >Gujarat</option> 
+            <option >Haryana</option>
+            <option >Himachal Pradesh</option>
+            <option >Jammu and Kashmir</option>
+            <option >Jharkhand</option>
+            <option >Karnataka</option> 
+            <option >Kerala</option>
+            <option >Madhya Pradesh</option>
+            <option >Maharashtra</option>
+            <option >Mizoram</option>
+            <option >Nagaland</option>
+            <option >Odisha</option>
+            <option >Punjab</option>
+            <option >Rajastan</option>
+            <option >Sikkim</option>
+            <option >Tamil Nadu</option>
+            <option >Telangana</option>
+            <option >Tripura</option>
+            <option >Uttar Pradesh</option>
+            <option >Uttarakhand</option>
+            <option >West Bengal</option>  
+      </select>
+    </div>
+
+    <div class="form-group">
+         <label class="control-label col-sm-2" >First Name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Your Firstname Please" name="fname" ng-model="fname1"  pattern="[a-zA-Z]+" ng-pattern-restrict  required>
+            <span class="hd" ng-show="form.fname.$touched && form.fname.$error.required"> Firstname Required </span>
+            <span class="hd" ng-show="form.fname.$error.pattern">Only Alphabets Allowed</span>
+          </div>
+   </div>
+
+   	<div class="form-group">
+        <label class="control-label col-sm-2" >Last Name:</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" placeholder="Your Lastname Please" name="lname" ng-model="lname1" pattern="[a-zA-Z]+" ng-pattern-restrict  required >
+          <span class="hd" ng-show="form.lname.$touched && form.lname.$error.required"> Lastname Required </span>
+          <span class="hd" ng-show="form.lname.$error.pattern">Only Alphabets Allowed</span>
+
+        </div>
+   </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Email:</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control"  placeholder="Enter email" name="eml" ng-model="eml1"  ng-pattern="emailFormat" required>
+          <span class="hd" ng-show="form.eml.$touched && form.eml.$error.required">Email Required </span>
+          <span class="hd" ng-show="form.eml.$dirty && form.eml.$error.pattern"> Not a valid email </span>
+        </div>
+    </div>
+   
+   <div class="form-group">
+       <label class="control-label col-sm-2" >Contact Number:</label>
+        <div class="col-sm-6">
+          <input  type="number" class="form-control" placeholder="Your Contact Details Please" name="phone" maxlength="10" ng-minlength="10" ng-maxlength="10" ng-model="phone1" required>
+          <span class="hd" ng-show="form.phone.$touched && form.phone.$error.required" >Phone number is required </span>
+      <span class="hd" 
+                 ng-show="(form.phone.$dirty && (form.phone.$error.minlength || form.phone.$error.maxlength) ) ">Phone number must be 10 digits</span>
+        </div>
+   </div>
+
+  <div class="form-group">
+        <label class="control-label col-sm-2" >Password:</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" placeholder="Set A Password" name="pwd1" ng-model="pswd1"  ng-minlength="6" ng-maxlength="12" required >
+          <span class="hd" ng-show="form.pwd1.$touched && form.pwd1.$error.required"> Password Need To Be Set </span>
+          <span class="hd" ng-show="form.pwd1.$dirty && form.pwd1.$error.minlength"> Password less than 6 characters </span>
+          <span class="hd" ng-show="form.pwd1.$dirty && form.pwd1.$error.maxlength"> Password more than 12 characters</span>
+        </div>
+   </div>
+
+  <div class="form-group">
+        <label class="control-label col-sm-2" >Confirm Password:</label>
+        <div class="col-sm-6">
+          <input type="Password" class="form-control" placeholder="Please Confirm Your Password" name="pwd2" ng-model="pswd2" required >
+          <span class="hd" ng-show="form.pwd2.$touched && form.pwd2.$error.required   "> Password Required </span>
+          <span class="hd" ng-show="(pswd1 != pswd2)"  >Passwords Not Matched</span>
+        </div>
+   </div>
+
+    <div class="form-horizontal">        
+        <div class="col-sm-offset-2 col-sm-10">
+           <label><input type="checkbox" name="check" ng-model="check1" required>I Agree to the terms and conditions</label>
+          <span class="hd" ng-show="form.check.$touched && form.check.$invalid">You should agree to the terms and conditions </span>
+        </div>
+   </div>
+
+    <div class="form-horizontal">        
+        <div class="col-sm-offset-2 col-sm-10" >
+
+          <button type="Submit" class="btn btn-default" name="but" ng-model="but1" ng-click="click()" style="background-color: {{bgcol}} ; color: black ; " 
+          ng-disabled=" (form.$invalid) || ((pswd1 != pswd2)) || (form.$submitted) " >
+             {{buttontxt}} </button>
+
+          <button type="reset" value="Reset" class="btn btn-primary" onclick="resetting_fn()">Reset</button>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10" >
+            <h2><span id="ld" ng-show="form.$submitted" > Hi {{fname1}}! U have Successfully Submitted Your Form </span></h2>
+</div>
+   </div>
+
+  </form>
+</div>
+
+</body>
+</html>
